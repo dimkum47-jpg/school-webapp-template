@@ -1,0 +1,8 @@
+{
+  "appId": "com.ace.schoolapp",
+  "appName": "우리 반 학습 공간",
+  "webDir": "web",
+  "server": {
+    "androidScheme": "https"
+  }
+}
