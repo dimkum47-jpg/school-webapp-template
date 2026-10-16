@@ -18,9 +18,29 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Build versioned static site
+        env:
+          DEPLOY_SHA: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import pathlib
+          import shutil
+          shutil.copytree("web", "site")
+          version = os.environ["DEPLOY_SHA"][:12]
+          index = pathlib.Path("site/index.html")
+          html = index.read_text(encoding="utf-8")
+          html = html.replace('./style.css"', f'./style.css?v={version}"')
+          html = html.replace('./app.js"', f'./app.js?v={version}"')
+          index.write_text(html, encoding="utf-8")
+          app = pathlib.Path("site/app.js")
+          js = app.read_text(encoding="utf-8")
+          js = js.replace('from "./config.js"', f'from "./config.js?v={version}"')
+          app.write_text(js, encoding="utf-8")
+          PY
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: web
+          path: site
       - id: deployment
         uses: actions/deploy-pages@v4
