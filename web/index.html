@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>학교 웹앱 템플릿</title><link rel="stylesheet" href="./style.css"></head>
+<body><main><header><span class="eyebrow">SCHOOL WEBAPP STARTER</span><h1>우리 반 학습 공간</h1><p>초등학생 15~20명을 위한 웹앱 기본 템플릿</p></header>
+<section class="card"><h2>학습 메모</h2><label for="note">오늘 배운 내용을 적어 보세요.</label><textarea id="note" maxlength="1000" placeholder="오늘 알게 된 점은..."></textarea><button id="save">기록 저장</button><p id="saveStatus" role="status"></p></section>
+<section class="card"><h2>AI에게 질문하기</h2><label for="question">궁금한 점을 질문해 보세요.</label><textarea id="question" maxlength="500" placeholder="왜 그런가요?"></textarea><button id="ask">질문하기</button><p id="answer" role="status"></p></section>
+<footer>교사가 Firebase 및 Cloudflare를 연결하기 전에는 기록·AI 기능을 사용할 수 없습니다.</footer></main>
+<script type="module" src="./app.js"></script></body></html>
