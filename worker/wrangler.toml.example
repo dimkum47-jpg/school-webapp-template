@@ -1,0 +1,11 @@
+name = "school-webapp-ai"
+main = "src.js"
+compatibility_date = "2026-10-01"
+# Copy to wrangler.toml, fill in actual IDs. Never commit secrets.
+# [vars]
+# FIREBASE_PROJECT_ID = "YOUR_PROJECT_ID"
+# ALLOWED_ORIGIN = "https://YOURNAME.github.io"
+# GEMINI_MODEL = "CHECK_CURRENT_FREE_TIER_MODEL"
+# [[kv_namespaces]]
+# binding = "QUOTA"
+# id = "YOUR_KV_NAMESPACE_ID"
