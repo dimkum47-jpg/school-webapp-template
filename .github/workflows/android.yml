@@ -15,7 +15,18 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - uses: android-actions/setup-android@v3
+      - name: Configure preinstalled Android SDK
+        run: |
+          echo "ANDROID_HOME=${ANDROID_SDK_ROOT}" >> "$GITHUB_ENV"
+          echo "${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
+          echo "${ANDROID_SDK_ROOT}/platform-tools" >> "$GITHUB_PATH"
+          test -x "${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager"
+      - name: Accept Android SDK licenses
+        run: |
+          yes | "${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager" --licenses > /tmp/android-licenses.log 2>&1 || {
+            tail -n 80 /tmp/android-licenses.log
+            exit 1
+          }
       - name: Install dependencies
         run: npm install --no-audit --no-fund
       - name: Generate Android project
