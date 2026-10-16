@@ -1,0 +1,6 @@
+worker/.dev.vars
+worker/wrangler.toml
+worker/node_modules/
+.env
+.env.*
+!.env.example
