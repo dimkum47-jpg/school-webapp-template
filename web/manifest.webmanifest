@@ -1,0 +1,17 @@
+{
+  "name": "우리 반 학습 공간",
+  "short_name": "학습 공간",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f1f6ff",
+  "theme_color": "#1767c8",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
